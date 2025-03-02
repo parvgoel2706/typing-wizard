@@ -1,0 +1,20 @@
+.OverlayMain {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  /* background-color: rgba(102, 92, 92, 0.8); */
+  display: flex;
+  align-items: center;
+  width:95vw;
+  height:95vh; 
+  animation: Slider 3s normal 1 forwards;
+}
+
+@keyframes Slider {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: 0;
+  }
+}
