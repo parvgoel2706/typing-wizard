@@ -11,7 +11,7 @@ export default function StartPage() {
           Wizard
         </h1>
       </div>
-      <button className="startBtn" onClick={handleStart}>Start Typing Test</button>
+      <button className="startBtn">Start Typing Test</button>
     </div>
   );
 }
