@@ -1,13 +1,11 @@
 import "./App.css";
 import TypingPrac from "./TypingPrac";
-import OverlayMain from "./OverlayMain";
-import OverlayBack from "./OverlayBack";
+import PopupBox from "./PopupBox";
 
 function App() {
   return (
     <>
-      <OverlayBack />
-      <OverlayMain />
+      <PopupBox/>
       <TypingPrac />
     </>
   );

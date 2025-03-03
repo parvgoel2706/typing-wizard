@@ -1,6 +1,9 @@
 import "./StartPage.css";
 
-export default function StartPage() {
+export default function StartPage({setStatus}) {
+  let StartGame = ()=>{
+    setStatus("running");
+  }
   return (
     <div className="StartPage">
       <div>
@@ -11,7 +14,7 @@ export default function StartPage() {
           Wizard
         </h1>
       </div>
-      <button className="startBtn">Start Typing Test</button>
+      <button className="startBtn" onClick={StartGame}>Start Typing Test</button>
     </div>
   );
 }

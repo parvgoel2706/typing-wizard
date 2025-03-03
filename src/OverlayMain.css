@@ -1,20 +1,35 @@
-.OverlayMain {
+#OverlayMain {
   position: absolute;
   left: 100%;
   top: 0;
-  /* background-color: rgba(102, 92, 92, 0.8); */
   display: flex;
   align-items: center;
   width:95vw;
   height:95vh; 
-  animation: Slider 3s normal 1 forwards;
 }
 
-@keyframes Slider {
+.dispMain{
+  animation: SliderUp 3s normal 1 forwards;
+}
+
+.hideMain{
+  animation: SliderDown 3s ease-out 1 forwards;  
+}
+
+@keyframes SliderUp {
   0% {
     left: 100%;
   }
   100% {
     left: 0;
+  }
+}
+
+@keyframes SliderDown {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: -100%;
   }
 }
