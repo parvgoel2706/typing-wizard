@@ -1,13 +1,11 @@
 import OverlayMain from "./OverlayMain";
 import OverlayBack from "./OverlayBack";
-import { useState } from "react";
 
-export default function Popup() {
-  let [Status, setStatus] = useState("start");
+export default function Popup({ isRunning, setIsRunning ,Status,setStatus }) {
   return (
-        <div className="PopupBosx">
-          <OverlayBack Status={Status}/>;
-          <OverlayMain setStatus={setStatus} Status={Status} />
-        </div>
+    <div className="PopupBosx">
+      <OverlayBack isRunning={isRunning} />
+      <OverlayMain isRunning={isRunning} setIsRunning={setIsRunning} Status={Status} setStatus={setStatus} />
+    </div>
   );
 }

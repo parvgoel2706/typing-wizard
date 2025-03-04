@@ -1,0 +1,9 @@
+.EndPage {
+    background-color: rgba(83, 87, 84, 0.85);
+    height: 80vh;
+    width: 100vw;
+    color: rgb(227, 209, 6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }

@@ -9,11 +9,11 @@
 }
 
 .dispMain{
-  animation: SliderUp 3s normal 1 forwards;
+  animation: SliderUp 3s normal 1s 1 forwards;
 }
 
 .hideMain{
-  animation: SliderDown 3s ease-out 1 forwards;  
+  animation: SliderDown 3s normal 1 forwards;  
 }
 
 @keyframes SliderUp {

@@ -1,12 +1,34 @@
 import "./OverlayMain.css";
 import StartPage from "./StartPage";
+import EndPage from "./EndPage";
+import { useEffect, useState } from "react";
 import Wizard from "./Wizard";
 
-export default function OverlayMain({setStatus,Status}) {
+export default function OverlayMain({
+  isRunning,
+  setIsRunning,
+  Status,
+  setStatus,
+}) {
+  const [overlayClass, setOverlayClass] = useState("dispMain"); // Track class state
+
+  useEffect(() => {
+    if (Status === "start") {
+        setOverlayClass("dispMain");
+    }
+  }, [Status]);
+
   return (
-    <div id = "OverlayMain" className={(Status==="start"||Status==="end")?"dispMain":"hideMain"}>
+    <div
+      id="OverlayMain"
+      key={Status}
+      className={`${!isRunning ? overlayClass : "hideMain"}`}
+    >
       <Wizard />
-      <StartPage setStatus={setStatus} />
+      {Status === "start" && <StartPage setIsRunning={setIsRunning} />}
+      {Status === "end" && (
+        <EndPage setStatus={setStatus} setIsRunning={setIsRunning} />
+      )}
     </div>
   );
 }

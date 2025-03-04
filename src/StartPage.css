@@ -29,7 +29,7 @@
   font-weight: 700;
   font-size: 1.2rem;
   transform: scale(0);
-  animation: popup 1s ease-in 1.5s 1 normal forwards,glow 2s ease-out 3s infinite normal forwards;
+  animation: popup 1s ease-in 2s 1 normal forwards,glow 2s ease-out 3s infinite normal forwards;
 }
 
 .startBtn:hover{

@@ -1,8 +1,8 @@
 import "./StartPage.css";
 
-export default function StartPage({setStatus}) {
+export default function StartPage({setIsRunning}) {
   let StartGame = ()=>{
-    setStatus("running");
+    setIsRunning(true);
   }
   return (
     <div className="StartPage">
