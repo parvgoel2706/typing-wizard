@@ -35,7 +35,7 @@ export default function Timer({
           }
           return prevVal - 1;
         });
-      }, 100);
+      }, 1000);
     }
     return () => {
       if (intervalId) {
