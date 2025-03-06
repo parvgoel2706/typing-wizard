@@ -7,13 +7,10 @@ function App() {
   let [isRunning, setIsRunning] = useState(false);
     let [Status, setStatus] = useState("start");
   
-  let changeStatus=(prevState)=>{
-    setStatus(prevState);
-  }
   return (
     <>
       <PopupBox setIsRunning={setIsRunning} isRunning={isRunning} Status={Status} setStatus={setStatus} />
-      <TypingPrac setIsRunning = {setIsRunning} changeStatus={changeStatus} />
+      <TypingPrac setIsRunning = {setIsRunning} isRunning={isRunning} setStatus={setStatus} />
     </>
   );
 }

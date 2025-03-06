@@ -3,38 +3,46 @@ import DisplayMin from "./DisplayMin";
 import DisplaySec from "./DisplaySec";
 import DisplayHrs from "./DisplayHrs";
 
-export default function Timer({ initTime,isRunning }) {
+export default function Timer({
+  initTime,
+  setIsRunning,
+  setStatus,
+  startTimer,
+  setStartTimer,
+}) {
   let [timeLeft, setTimeLeft] = useState(initTime);
-  
 
   useEffect(() => {
     setTimeLeft(initTime);
   }, [initTime]);
 
   useEffect(() => {
-    if (!isRunning) return;
-    let id = setInterval(() => {
-      setTimeLeft((prevVal) => {
-        if (prevVal <= 1) {
-          clearInterval(id);
-          setIsRunning(false);
-          return 0;
-        }
-        return prevVal - 1;
-      });
-    }, 1000);
-    return () => clearInterval(id);
-  }, [isRunning]);
-
-  let startTimer = () => {
-    if (!isRunning) setIsRunning(true);
-  };
-  
-  let checkEnter = (event) => {
-    if (event.key === "Enter" && !isRunning) {
-      startTimer();
+    if (timeLeft === 0) {
+      setIsRunning(false);
+      setStatus("end");
+      setStartTimer(false);
+      setTimeLeft(initTime);
     }
-  };
+  }, [timeLeft]);
+
+  useEffect(() => {
+    let intervalId;
+    if (startTimer) {
+      intervalId = setInterval(() => {
+        setTimeLeft((prevVal) => {
+          if (prevVal <= 1) {
+            return 0;
+          }
+          return prevVal - 1;
+        });
+      }, 100);
+    }
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [startTimer]);
 
   let hrs = Math.floor(timeLeft / 3600);
   let min = Math.floor((timeLeft % 3600) / 60);
