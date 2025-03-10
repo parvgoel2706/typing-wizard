@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import Letter from "./Letter";
 import React from "react";
 

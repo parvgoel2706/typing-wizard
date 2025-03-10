@@ -1,4 +1,4 @@
-import "./OverlayMain.css";
+import "./overlayMain.css";
 import StartPage from "./StartPage";
 import EndPage from "./EndPage";
 import { useEffect, useState } from "react";

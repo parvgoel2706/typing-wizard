@@ -27,9 +27,7 @@ const Letter = React.memo(function Letter({
 
   return (
     <>
-      <span className={letterClass}>
-        {letter}
-      </span>
+      <span className={letterClass}>{letter}</span>
     </>
   );
 });
