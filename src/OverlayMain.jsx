@@ -20,9 +20,8 @@ export default function OverlayMain({
 
   return (
     <div
-      id="OverlayMain"
       key={Status}
-      className={`${!isRunning ? overlayClass : "hideMain"}`}
+      className={`overlayMain ${!isRunning ? overlayClass : "hideMain"}`}
     >
       <Wizard />
       {Status === "start" && <StartPage setIsRunning={setIsRunning} />}

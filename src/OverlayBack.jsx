@@ -1,7 +1,9 @@
 import "./OverlayBack.css";
 
-export default function OverlayBack({isRunning}) {
-
-  return <div id="OverlayBack" className={!isRunning?"showBack":"hideBack"}>
-  </div>;
+export default function OverlayBack({ isRunning }) {
+  return (
+    <div
+      className={`OverlayBack ${!isRunning ? "showBack" : "hideBack"}`}
+    ></div>
+  );
 }

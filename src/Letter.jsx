@@ -27,7 +27,7 @@ const Letter = React.memo(function Letter({
 
   return (
     <>
-      <span id="letter" className={letterClass}>
+      <span className={letterClass}>
         {letter}
       </span>
     </>

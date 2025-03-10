@@ -10,7 +10,7 @@ export default function TimeSelect({ setInitial }) {
   },[]);
 
   return (
-    <select name="time" id="time" onChange={handleInput} defaultValue="30">
+    <select name="time" onChange={handleInput} defaultValue="30">
       <option value="15">15 secs</option>
       <option value="30">30 secs</option>
       <option value="60">60 secs</option>
