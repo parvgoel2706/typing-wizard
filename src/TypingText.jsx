@@ -1,36 +1,54 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { generate, count } from "random-words";
 import Word from "./Word";
-import "./TypingText.css"
+import "./TypingText.css";
 
 export default function TypingText({ setStartTimer, isRunning }) {
-  let [randomArray, setRandomArray] = useState(
-    generate({ exactly: 202, min: 2, max: 8 })
-  );
+  let randomArray = useMemo(() => {
+    if (isRunning) {
+      return generate({ exactly: 45, minLength: 2, maxLength: 10 });
+    }
+    return [];
+  }, [isRunning]);
 
   let [userType, setUserType] = useState("");
+  let [wordIdx, setWordIdx] = useState(0);
 
   let handlePress = () => {
     setStartTimer(true);
     window.removeEventListener("keydown", handlePress);
   };
-  
+
   let handleInput = (event) => {
     if (event.key === " ") {
-      return setUserType("");
+      setWordIdx((prevVal) => prevVal + 1);
+      setUserType("");
+      return "";
     }
-    else if(event.key === "Backspace"){
-      return setUserType((prev)=>prev.slice(0,-1))
+    if (event.key === "Backspace") {
+      setUserType((prevVal) => prevVal.slice(0, -1));
+      return;
     }
-    let keys=["Control","NumLock","CapsLock","Tab","Shift","Enter","Unidentified"];
-    if(!keys.includes(event.key))
-    setUserType((prevVal)=>{return `${prevVal}${event.key}`});
+
+    // let keys = [
+    //   "Control",
+    //   "NumLock",
+    //   "CapsLock",
+    //   "Tab",
+    //   "Shift",
+    //   "Enter",
+    //   "Unidentified",
+    // ];
+    if (event.key.length === 1)
+      setUserType((prevVal) => {
+        return `${prevVal}${event.key}`;
+      });
   };
-  
+
   useEffect(() => {
     if (isRunning) {
-      setUserType("")
-      setRandomArray(generate({ exactly: 202, min: 2, max: 8 }));
+      setWordIdx(0);
+      setUserType("");
       window.addEventListener("keydown", handlePress);
       window.addEventListener("keydown", handleInput);
     }
@@ -39,12 +57,18 @@ export default function TypingText({ setStartTimer, isRunning }) {
       window.removeEventListener("keydown", handleInput);
     };
   }, [isRunning]);
-
   return (
     <>
       <div className="TypingText">
         {randomArray.map((word, idx) => (
-          <Word key={idx} word={word} />
+          <Word
+            key={idx}
+            word={word}
+            {...(idx === wordIdx && { userType })}
+            // {...(idx === wordIdx && { setUserType })}
+            // {...(idx === wordIdx && { Back })}
+            isRunning={isRunning}
+          />
         ))}
       </div>
       {userType}
