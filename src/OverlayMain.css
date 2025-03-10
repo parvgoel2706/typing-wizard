@@ -15,7 +15,7 @@
 }
 
 .hideMain{
-  animation: SliderHide 3s normal 1 forwards;
+  animation: SliderHide 2.5s normal 1 forwards;
 }
 
 @keyframes SliderHide {
@@ -23,7 +23,7 @@
     transform: translateX(-2%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-102%);
   }
 }
 

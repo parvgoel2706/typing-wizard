@@ -4,3 +4,21 @@
 .correct{
     color: white;
 }
+.cursor{
+    display: inline-block;
+    position:relative;
+    top:7px;
+    height:40px;
+    width:2px;
+    background-color: yellow;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink{
+    0%,50%{
+        opacity: 0;
+    }
+    51%,100%{
+        opacity: 1;
+    }
+}

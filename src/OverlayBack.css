@@ -8,7 +8,7 @@
 }
 
 .hideBack {
-    animation: scaleDown 1s ease-in 2s 1 forwards;
+    animation: scaleDown 1s ease-in 1.5s 1 forwards;
 }
 .showBack {
     animation: scaleUp 1s ease-in 0s 1 forwards;

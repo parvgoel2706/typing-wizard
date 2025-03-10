@@ -24,9 +24,7 @@ const Letter = React.memo(function Letter({
   useEffect(() => {
     if (isRunning) setLetterClass("");
   }, [isRunning]);
-  useEffect(() => {
-    console.log("PArv");
-  });
+
   return (
     <>
       <span id="letter" className={letterClass}>

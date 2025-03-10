@@ -30,15 +30,7 @@ export default function TypingText({ setStartTimer, isRunning }) {
       return;
     }
 
-    // let keys = [
-    //   "Control",
-    //   "NumLock",
-    //   "CapsLock",
-    //   "Tab",
-    //   "Shift",
-    //   "Enter",
-    //   "Unidentified",
-    // ];
+    // to prevent CAPSLOCK TAB SHIFT etc
     if (event.key.length === 1)
       setUserType((prevVal) => {
         return `${prevVal}${event.key}`;
@@ -65,8 +57,6 @@ export default function TypingText({ setStartTimer, isRunning }) {
             key={idx}
             word={word}
             {...(idx === wordIdx && { userType })}
-            // {...(idx === wordIdx && { setUserType })}
-            // {...(idx === wordIdx && { Back })}
             isRunning={isRunning}
           />
         ))}
