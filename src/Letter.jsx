@@ -18,6 +18,10 @@ const Letter = React.memo(function Letter({
             : "incorrect"
           : null
       );
+      return;
+    }
+    if(typeof userType !== "undefined"){
+      setLetterClass("");
     }
   }, [userType]);
 
