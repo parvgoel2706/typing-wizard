@@ -1,4 +1,4 @@
-import "./overlayMain.css";
+import "./OverlayMain.css";
 import StartPage from "./StartPage";
 import EndPage from "./EndPage";
 import { useEffect, useState } from "react";
@@ -14,24 +14,14 @@ export default function OverlayMain({
 
   useEffect(() => {
     if (Status === "start") {
-      setOverlayClass("dispMain");
+        setOverlayClass("dispMain");
     }
   }, [Status]);
 
   return (
     <div
       key={Status}
-      className={`${!isRunning ? overlayClass : "hideMain"}`}
-      style={{
-        position: "absolute",
-        left: "0%",
-        transform: "translate(100%)",
-        top: "0",
-        display: "flex",
-        alignItems: "center",
-        width: "100vw",
-        height: "95vh",
-      }}
+      className={`overlayMain ${!isRunning ? overlayClass : "hideMain"}`}
     >
       <Wizard />
       {Status === "start" && <StartPage setIsRunning={setIsRunning} />}
