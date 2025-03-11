@@ -19,27 +19,36 @@ export default function TypingText({ setStartTimer, isRunning }) {
     window.removeEventListener("keydown", handlePress);
   };
 
+  let cursorIdx = useRef(0);
+
   let handleInput = (event) => {
     if (event.key === " ") {
       setWordIdx((prevVal) => prevVal + 1);
       setUserType("");
+      cursorIdx.current += 10;
+      cursorIdx.current = Math.floor(cursorIdx.current/10);
+      cursorIdx.current *=10;
       return "";
     }
     if (event.key === "Backspace") {
       setUserType((prevVal) => prevVal.slice(0, -1));
+      cursorIdx.current -= 1;
       return;
     }
 
     // to prevent CAPSLOCK TAB SHIFT etc
-    if (event.key.length === 1)
+    if (event.key.length === 1) {
       setUserType((prevVal) => {
         return `${prevVal}${event.key}`;
       });
+      cursorIdx.current += 1;
+    }
   };
 
   useEffect(() => {
     if (isRunning) {
       setWordIdx(0);
+      cursorIdx.current=0;
       setUserType("");
       window.addEventListener("keydown", handlePress);
       window.addEventListener("keydown", handleInput);
@@ -58,6 +67,8 @@ export default function TypingText({ setStartTimer, isRunning }) {
             word={word}
             {...(idx === wordIdx && { userType })}
             isRunning={isRunning}
+            cursorIdx={cursorIdx}
+            wordIdx={wordIdx}
           />
         ))}
       </div>

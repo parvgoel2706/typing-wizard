@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TimeSelect from "./TimeSelect";
 import Timer from "./Timer";
 
@@ -25,8 +25,7 @@ export default function TimeOption({
 
   return (
     <div className="TimeOption" style={styles}>
-      <TimeSelect setInitial={setInitial} />
-      
+      <TimeSelect setInitial={setInitial} startTimer={startTimer} />
       <Timer
         initTime={initialTime}
         setIsRunning={setIsRunning}

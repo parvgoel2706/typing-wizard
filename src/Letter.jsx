@@ -6,6 +6,8 @@ const Letter = React.memo(function Letter({
   letter,
   userType,
   idx,
+  cursorIdx,
+  wordIdx,
   isRunning,
 }) {
   let [letterClass, setLetterClass] = useState("");
@@ -20,7 +22,7 @@ const Letter = React.memo(function Letter({
       );
       return;
     }
-    if(typeof userType !== "undefined"){
+    if (typeof userType !== "undefined") {
       setLetterClass("");
     }
   }, [userType]);
@@ -31,6 +33,13 @@ const Letter = React.memo(function Letter({
 
   return (
     <>
+      {cursorIdx?.current !== undefined &&
+        cursorIdx?.current !== null &&
+        wordIdx !== undefined &&
+        wordIdx !== null &&
+        wordIdx === Math.floor(cursorIdx.current / 10) &&
+        idx === cursorIdx.current % 10 && <div className="cursor"></div>}
+
       <span className={letterClass}>{letter}</span>
     </>
   );

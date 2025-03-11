@@ -1,16 +1,21 @@
 import { useEffect } from "react";
 
-export default function TimeSelect({ setInitial }) {
+export default function TimeSelect({ setInitial, startTimer }) {
   let handleInput = (event) => {
     setInitial(event.target.value);
   };
 
   useEffect(() => {
     setInitial("30");
-  },[]);
+  }, []);
 
   return (
-    <select name="time" onChange={handleInput} defaultValue="30">
+    <select
+      name="time"
+      onChange={handleInput}
+      defaultValue="30"
+      disabled={startTimer}
+    >
       <option value="15">15 secs</option>
       <option value="30">30 secs</option>
       <option value="60">60 secs</option>
