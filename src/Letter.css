@@ -7,9 +7,10 @@
 .cursor{
     display: inline-block;
     position: absolute;
-    margin-top:7px;
-    height:45px;
-    width:3px;
+    margin-top:calc(7px + 0.15vw);
+    /* height:45px; */
+    height:calc(20px + 1.5vw);
+    width:2.5px;
     background-color: yellow;
     animation: blink 1s linear infinite;
 }

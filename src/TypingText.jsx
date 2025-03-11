@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useMemo } from "react";
-import { generate, count } from "random-words";
+import { generate } from "random-words";
 import Word from "./Word";
 import "./TypingText.css";
 
@@ -26,8 +26,8 @@ export default function TypingText({ setStartTimer, isRunning }) {
       setWordIdx((prevVal) => prevVal + 1);
       setUserType("");
       cursorIdx.current += 10;
-      cursorIdx.current = Math.floor(cursorIdx.current/10);
-      cursorIdx.current *=10;
+      cursorIdx.current = Math.floor(cursorIdx.current / 10);
+      cursorIdx.current *= 10;
       return "";
     }
     if (event.key === "Backspace") {
@@ -48,7 +48,7 @@ export default function TypingText({ setStartTimer, isRunning }) {
   useEffect(() => {
     if (isRunning) {
       setWordIdx(0);
-      cursorIdx.current=0;
+      cursorIdx.current = 0;
       setUserType("");
       window.addEventListener("keydown", handlePress);
       window.addEventListener("keydown", handleInput);
@@ -65,10 +65,9 @@ export default function TypingText({ setStartTimer, isRunning }) {
           <Word
             key={idx}
             word={word}
-            {...(idx === wordIdx && { userType })}
+            {...(idx === wordIdx && { userType, wordIdx, cursorIdx })}
             isRunning={isRunning}
-            cursorIdx={cursorIdx}
-            wordIdx={wordIdx}
+            
           />
         ))}
       </div>

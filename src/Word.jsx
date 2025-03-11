@@ -1,13 +1,21 @@
 import Letter from "./Letter";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Word = React.memo(function Word({
   word,
   userType,
   isRunning,
   cursorIdx,
-  wordIdx
+  wordIdx,
 }) {
+  // let [wordS, setWordS] = useState(word);
+  // useEffect(() => {
+  //   if (userType && userType.length > word.length) {
+  //     setWordS(word + userType.slice(word.length));
+  //   }
+  // }, [userType]);
+  // // useEffect(() => {
+  // // });
   return (
     <>
       <span
@@ -21,7 +29,12 @@ const Word = React.memo(function Word({
           <Letter
             key={idx}
             letter={letter}
-            {...(typeof userType !== "undefined" && { userType, idx,cursorIdx,wordIdx })}
+            {...(typeof userType !== "undefined" && {
+              userType,
+              idx,
+              cursorIdx,
+              wordIdx,
+            })}
             // {...(idx === letterIdx.current && { userLetter })}
             isRunning={isRunning}
           />
