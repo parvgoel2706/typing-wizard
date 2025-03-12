@@ -20,15 +20,16 @@ export default function TypingText({ setStartTimer, isRunning }) {
   };
 
   let cursorIdx = useRef(0);
+  const wordIdxRef = useRef(0);
 
   let handleInput = (event) => {
     if (event.key === " ") {
       setWordIdx((prevVal) => prevVal + 1);
       setUserType("");
-      cursorIdx.current += 10;
-      cursorIdx.current = Math.floor(cursorIdx.current / 10);
-      cursorIdx.current *= 10;
-      return "";
+      cursorIdx.current += 100;
+      cursorIdx.current = Math.floor(cursorIdx.current / 100);
+      cursorIdx.current *= 100;
+      return ;
     }
     if (event.key === "Backspace") {
       setUserType((prevVal) => prevVal.slice(0, -1));
@@ -39,11 +40,18 @@ export default function TypingText({ setStartTimer, isRunning }) {
     // to prevent CAPSLOCK TAB SHIFT etc
     if (event.key.length === 1) {
       setUserType((prevVal) => {
-        return `${prevVal}${event.key}`;
+        if (prevVal.length < randomArray[wordIdxRef.current].length) {
+          cursorIdx.current += 1;
+          return `${prevVal}${event.key}`;
+        }
+        return prevVal;
       });
-      cursorIdx.current += 1;
     }
   };
+
+  useEffect(() => {
+    wordIdxRef.current = wordIdx;
+  }, [wordIdx]);
 
   useEffect(() => {
     if (isRunning) {
@@ -64,10 +72,9 @@ export default function TypingText({ setStartTimer, isRunning }) {
         {randomArray.map((word, idx) => (
           <Word
             key={idx}
-            word={word}
+            word={`${word} `}
             {...(idx === wordIdx && { userType, wordIdx, cursorIdx })}
             isRunning={isRunning}
-            
           />
         ))}
       </div>
