@@ -21,7 +21,7 @@ const Word = React.memo(function Word({
       <span
         className="word"
         style={{
-          marginRight: "calc(10px + 1.1vw)",
+          marginRight: "calc(8px + 0.8vw)",
           marginBottom: "calc(2px + 1vw)",
         }}
       >
