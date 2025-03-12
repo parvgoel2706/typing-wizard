@@ -75,9 +75,10 @@ export default function TypingText({ setStartTimer, isRunning }) {
             word={`${word} `}
             {...(idx === wordIdx && { userType, wordIdx, cursorIdx })}
             isRunning={isRunning}
-          />
-        ))}
+            />
+          ))}
       </div>
+          {userType}
     </>
   );
 }
