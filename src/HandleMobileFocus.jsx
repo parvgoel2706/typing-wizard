@@ -21,7 +21,7 @@ const HandleMobileFocus = ({ isRunning }) => {
       <button onClick={handleClick} style={{ padding: "3px 3px 0px 3px" }}>
         <img src={keyboardImg} alt="Keyboard" style={{ width: "100px" }} />
       </button>
-      <input ref={inputRef} type="text" style={{ visibility: "hidden" }} />
+      <input ref={inputRef} type="text" style={{opacity:"0" }} />
     </div>
   );
 };

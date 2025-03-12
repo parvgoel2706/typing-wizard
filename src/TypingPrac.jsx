@@ -11,7 +11,6 @@ export default function TypingPrac({setIsRunning,isRunning,setStatus}) {
     <div className="TypingPrac" style={{ marginTop:"10px",height:"60%", color: "white",display:"flex",flexDirection:"column",justifyContent:"space-evenly" }}>
       <TimingOption setIsRunning={setIsRunning} setStatus={setStatus} startTimer={startTimer} setStartTimer={setStartTimer}/>
       <TypingText isRunning={isRunning} setStartTimer={setStartTimer}/>
-      {/* <input type="text" autoFocus/>*/}
       <HandleMobileFocus isRunning={isRunning}/>
     </div>
   );
