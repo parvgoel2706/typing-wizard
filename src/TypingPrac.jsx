@@ -1,18 +1,20 @@
 import TypingText from "./TypingText";
 import TimingOption from "./TimingOption";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HandleMobileFocus from "./HandleMobileFocus";
 
-export default function TypingPrac({setIsRunning,isRunning,setStatus}) {
-
-  let [startTimer,setStartTimer] = useState(false);
-
+export default function TypingPrac({ setIsRunning, isRunning, setStatus }) {
+  let [startTimer, setStartTimer] = useState(false);
   return (
-    <div className="TypingPrac" style={{ marginTop:"10px",height:"70%", color: "white",display:"flex",flexDirection:"column",justifyContent:"space-evenly" }}>
-      <TimingOption setIsRunning={setIsRunning} setStatus={setStatus} startTimer={startTimer} setStartTimer={setStartTimer}/>
-      <TypingText isRunning={isRunning} setStartTimer={setStartTimer}/>
-      <HandleMobileFocus isRunning={isRunning}/>
+    <div className="TypingPrac" style={{ color: "white" }}>
+      <TimingOption
+        setIsRunning={setIsRunning}
+        setStatus={setStatus}
+        startTimer={startTimer}
+        setStartTimer={setStartTimer}
+      />
+      <TypingText isRunning={isRunning} setStartTimer={setStartTimer} />
+      {screen.width < 650 && <HandleMobileFocus isRunning={isRunning} />}
     </div>
   );
 }
-
