@@ -11,6 +11,10 @@ export default function TypingText({ setStartTimer, isRunning }) {
     return [];
   }, [isRunning]);
 
+  window.addEventListener("resize", () => {
+    document.body.style.height = window.innerHeight + "px";
+  });
+
   let [userType, setUserType] = useState("");
   let [wordIdx, setWordIdx] = useState(0);
 
@@ -29,7 +33,7 @@ export default function TypingText({ setStartTimer, isRunning }) {
       cursorIdx.current += 100;
       cursorIdx.current = Math.floor(cursorIdx.current / 100);
       cursorIdx.current *= 100;
-      return ;
+      return;
     }
     if (event.key === "Backspace") {
       setUserType((prevVal) => prevVal.slice(0, -1));
@@ -75,10 +79,10 @@ export default function TypingText({ setStartTimer, isRunning }) {
             word={`${word} `}
             {...(idx === wordIdx && { userType, wordIdx, cursorIdx })}
             isRunning={isRunning}
-            />
-          ))}
+          />
+        ))}
       </div>
-          {userType}
+      {userType}
     </>
   );
 }
