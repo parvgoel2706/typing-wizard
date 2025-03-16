@@ -11,10 +11,6 @@ export default function TypingText({ setStartTimer, isRunning }) {
     return [];
   }, [isRunning]);
 
-  window.addEventListener("resize", () => {
-    document.body.style.height = window.innerHeight + "px";
-  });
-
   let [userType, setUserType] = useState("");
   let [wordIdx, setWordIdx] = useState(0);
 
@@ -23,8 +19,10 @@ export default function TypingText({ setStartTimer, isRunning }) {
     window.removeEventListener("keydown", handlePress);
   };
 
-  let cursorIdx = useRef(0);
+  const cursorIdx = useRef(0);
   const wordIdxRef = useRef(0);
+  const contentDiv = useRef();
+  const wordRefs = useRef([]);
 
   let handleInput = (event) => {
     if (event.key === " ") {
@@ -58,6 +56,16 @@ export default function TypingText({ setStartTimer, isRunning }) {
   }, [wordIdx]);
 
   useEffect(() => {
+    if (wordRefs.current[wordIdx]) {
+      let wordElement = wordRefs.current[wordIdx];
+      let wordRect = wordElement.getBoundingClientRect();
+      if (wordRect.top > (140+2*(32.4 + 0.026 * screen.width))) {
+        contentDiv.current.scrollTop += (33 + 0.026 * screen.width);
+      }
+    }
+  }, [wordIdx]);
+
+  useEffect(() => {
     if (isRunning) {
       setWordIdx(0);
       cursorIdx.current = 0;
@@ -72,13 +80,14 @@ export default function TypingText({ setStartTimer, isRunning }) {
   }, [isRunning]);
   return (
     <>
-      <div className="TypingText">
+      <div className="TypingText" ref={contentDiv}>
         {randomArray.map((word, idx) => (
           <Word
             key={idx}
             word={`${word} `}
             {...(idx === wordIdx && { userType, wordIdx, cursorIdx })}
             isRunning={isRunning}
+            ref={(el) => (wordRefs.current[idx] = el)}
           />
         ))}
       </div>

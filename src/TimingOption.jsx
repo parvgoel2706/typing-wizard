@@ -21,7 +21,7 @@ export default function TimeOption({
     display: "flex",
     justifyContent: "space-evenly",
     alignItems: "center",
-    margin: "60px 0px",
+    margin: "40px 0px",
   };
 
   return (
