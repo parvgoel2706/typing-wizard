@@ -63,7 +63,7 @@ export default function TypingText({ setStartTimer, isRunning }) {
       if (wordRect.top > 140 + 2 * (32.4 + 0.026 * screen.width)) {
 
         contentDiv.current.scrollTop += 33 + 0.026 * screen.width;
-        let addWord = generate({ exactly: 8, minLength: 2, maxLength: 10 });
+        let addWord = generate({ exactly: 10, minLength: 2, maxLength: 10 });
         addWord.map((newWord) => randomArray.push(newWord));
       }
     }
