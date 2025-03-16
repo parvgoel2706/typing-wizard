@@ -6,7 +6,7 @@ import "./TypingText.css";
 export default function TypingText({ setStartTimer, isRunning }) {
   let randomArray = useMemo(() => {
     if (isRunning) {
-      return generate({ exactly: 45, minLength: 2, maxLength: 10 });
+      return generate({ exactly: 30, minLength: 2, maxLength: 10 });
     }
     return [];
   }, [isRunning]);
@@ -59,8 +59,12 @@ export default function TypingText({ setStartTimer, isRunning }) {
     if (wordRefs.current[wordIdx]) {
       let wordElement = wordRefs.current[wordIdx];
       let wordRect = wordElement.getBoundingClientRect();
-      if (wordRect.top > (140+2*(32.4 + 0.026 * screen.width))) {
-        contentDiv.current.scrollTop += (33 + 0.026 * screen.width);
+
+      if (wordRect.top > 140 + 2 * (32.4 + 0.026 * screen.width)) {
+
+        contentDiv.current.scrollTop += 33 + 0.026 * screen.width;
+        let addWord = generate({ exactly: 8, minLength: 2, maxLength: 10 });
+        addWord.map((newWord) => randomArray.push(newWord));
       }
     }
   }, [wordIdx]);
@@ -91,7 +95,6 @@ export default function TypingText({ setStartTimer, isRunning }) {
           />
         ))}
       </div>
-      {userType}
     </>
   );
 }
