@@ -14,8 +14,17 @@ export default function TypingPrac({ setIsRunning, isRunning, setStatus }) {
         setStartTimer={setStartTimer}
       />
       <TypingText isRunning={isRunning} setStartTimer={setStartTimer} />
-      <p style={{color:"red"}}>"Disclaimer: This experience may not function as intended on mobile devices. For optimal performance, please access it on a desktop or laptop computer."</p>
-      {screen.width < 650 && <HandleMobileFocus isRunning={isRunning} />}
+
+      {screen.width < 650 ? (
+        <>
+          <p style={{ color: "red", fontSize: "0.8rem", marginTop: "1rem" }}>
+            Disclaimer: This experience may not function as intended on mobile
+            devices. For optimal performance, please access it on a desktop or
+            laptop computer.
+          </p>
+          <HandleMobileFocus isRunning={isRunning} />
+        </>
+      ):null}
     </div>
   );
 }
