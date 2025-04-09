@@ -3,7 +3,13 @@ import { generate } from "random-words";
 import Word from "./Word";
 import "./TypingText.css";
 
-export default function TypingText({ setStartTimer, isRunning }) {
+export default function TypingText({
+  setStartTimer,
+  isRunning,
+  correct,
+  incorrect,
+  missed
+}) {
   let randomArray = useMemo(() => {
     if (isRunning) {
       return generate({ exactly: 30, minLength: 2, maxLength: 10 });
@@ -22,10 +28,21 @@ export default function TypingText({ setStartTimer, isRunning }) {
   const cursorIdx = useRef(0);
   const wordIdxRef = useRef(0);
   const contentDiv = useRef();
+  const userTypeRef = useRef("");
   const wordRefs = useRef([]);
 
   let handleInput = (event) => {
     if (event.key === " ") {
+      let word = randomArray[wordIdxRef.current];
+      for (let i = 0; i < word.length; i++) {
+        if (userTypeRef.current.charAt(i) === word.charAt(i)) {
+          correct.current++;
+        }else if(userTypeRef.current.charAt(i) === ""){
+          missed.current++;
+        }else {
+          incorrect.current++;
+        }
+      }
       setWordIdx((prevVal) => prevVal + 1);
       setUserType("");
       cursorIdx.current += 100;
@@ -56,12 +73,14 @@ export default function TypingText({ setStartTimer, isRunning }) {
   }, [wordIdx]);
 
   useEffect(() => {
+    userTypeRef.current = userType;
+  }, [userType]);
+  useEffect(() => {
     if (wordRefs.current[wordIdx]) {
       let wordElement = wordRefs.current[wordIdx];
       let wordRect = wordElement.getBoundingClientRect();
 
       if (wordRect.top > 140 + 2 * (32.4 + 0.026 * screen.width)) {
-
         contentDiv.current.scrollTop += 33 + 0.026 * screen.width;
         let addWord = generate({ exactly: 10, minLength: 2, maxLength: 10 });
         addWord.map((newWord) => randomArray.push(newWord));

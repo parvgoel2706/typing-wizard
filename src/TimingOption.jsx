@@ -7,11 +7,13 @@ export default function TimeOption({
   setStatus,
   startTimer,
   setStartTimer,
+  testTime
 }) {
   let [initialTime, setInitialTime] = useState();
 
   let setInitial = (time) => {
     setInitialTime(time);
+    testTime.current = time;
   };
 
   let styles = {

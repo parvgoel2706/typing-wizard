@@ -1,14 +1,11 @@
 import Letter from "./Letter";
-import React, {forwardRef } from "react";
+import React, { forwardRef } from "react";
 
 const Word = React.memo(
-  forwardRef(function Word({
-    word,
-    userType,
-    isRunning,
-    cursorIdx,
-    wordIdx,
-  },ref) {
+  forwardRef(function Word(
+    { word, userType, isRunning, cursorIdx, wordIdx},
+    ref
+  ) {
     return (
       <>
         <span

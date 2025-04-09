@@ -28,6 +28,7 @@
   box-shadow: 10px 5px 10px rgb(21, 20, 20);
   font-weight: 700;
   font-size: 1.2rem;
+  color: black;
   transform: scale(0);
   animation: popup 1s ease-in 2s 1 normal forwards,glow 2s ease-out 3s infinite normal forwards;
 }
