@@ -1,33 +1,33 @@
-.OverlayBack{
-    background-color: rgba(0, 0, 0, 0.9);
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
+.OverlayBack {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
 }
 
 .hideBack {
-    animation: scaleDown 1s ease-in 1.5s 1 forwards;
+  animation: scaleDown 1s ease-in 1.5s 1 forwards;
 }
 .showBack {
-    animation: scaleUp 1s ease-in 0s 1 forwards;
+  animation: scaleUp 1s ease-in 0s 1 forwards;
 }
 
 @keyframes scaleUp {
-    0% {
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes scaleDown {
-    0%{
-        transform: scale(1);
-    }
-    100%{
-        transform: scale(0);
-    }
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
 }

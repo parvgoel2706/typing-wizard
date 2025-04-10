@@ -8,55 +8,60 @@
   justify-content: space-evenly;
 }
 
-.projName{
+.projName {
   margin-top: 16px;
   font-size: calc(30px + 6vw);
 }
 
-#projName1{
+#projName1 {
   margin-left: -12%;
 }
 
-#projName2{
+#projName2 {
   margin-left: 12%;
 }
-.startBtn{
+.startBtn {
   width: 40%;
   margin: 0 auto;
   border: 4px solid rgb(0, 0, 0);
-  background-image: radial-gradient(rgb(255, 255, 255),#5d6267ca,rgb(52, 56, 58));
+  background-image: radial-gradient(
+    rgb(255, 255, 255),
+    #5d6267ca,
+    rgb(52, 56, 58)
+  );
   box-shadow: 10px 5px 10px rgb(21, 20, 20);
   font-weight: 700;
   font-size: 1.2rem;
   color: black;
   transform: scale(0);
-  animation: popup 1s ease-in 2s 1 normal forwards,glow 2s ease-out 3s infinite normal forwards;
+  animation: popup 1s ease-in 2s 1 normal forwards,
+    glow 2s ease-out 3s infinite normal forwards;
 }
 
-.startBtn:hover{
+.startBtn:hover {
   border-color: rgb(84, 19, 19);
-  color:rgb(168, 8, 8);
+  color: rgb(168, 8, 8);
 }
 
 @keyframes popup {
-  0%{
+  0% {
     transform: scale(0);
   }
-  100%{
+  100% {
     transform: scale(1);
   }
 }
 
 @keyframes glow {
-  0%{
+  0% {
     transform: scale(0.96);
     box-shadow: 0px 0px 5px rgb(255, 255, 255);
   }
-  50%{
+  50% {
     transform: scale(1.04);
     box-shadow: 0px 0px 20px rgba(206, 203, 51, 0.88);
   }
-  100%{
+  100% {
     transform: scale(0.96);
     box-shadow: 0px 0px 5px rgb(255, 255, 255);
   }

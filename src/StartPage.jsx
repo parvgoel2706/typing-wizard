@@ -1,9 +1,9 @@
 import "./StartPage.css";
 
-export default function StartPage({setIsRunning}) {
-  let StartGame = ()=>{
+export default function StartPage({ setIsRunning }) {
+  let StartGame = () => {
     setIsRunning(true);
-  }
+  };
   return (
     <div className="StartPage">
       <div>
@@ -14,7 +14,9 @@ export default function StartPage({setIsRunning}) {
           Wizard
         </h1>
       </div>
-      <button className="startBtn" onClick={StartGame}>Start Typing Test</button>
+      <button className="startBtn" onClick={StartGame}>
+        Start Typing Test
+      </button>
     </div>
   );
 }

@@ -3,17 +3,12 @@ import "./EndPage.css";
 export default function EndPage({
   setStatus,
   setIsRunning,
-  info = {
-    WPM: 25,
-    accuracy: 97,
-    correctWord: 20,
-    incorrectWord: 3,
-    testTime: 5,
-  },
   correct,
   incorrect,
   missed,
   testTime,
+  words,
+  recorrect,
 }) {
   let handleHome = () => {
     setStatus("start");
@@ -23,10 +18,21 @@ export default function EndPage({
   };
 
   let accuracy =
-    (correct.current / (correct.current + incorrect.current + missed.current)) *
+    ((correct.current + recorrect.current / 2) /
+      (correct.current +
+        incorrect.current +
+        missed.current +
+        recorrect.current)) *
       100 || 0;
 
-  let WPM = (correct.current * 60) / (5 * testTime.current) || 0;
+  // let WPM = (correct.current * 60) / (5 * testTime.current) || 0;
+  // let WPM = Math.max(0, Math.round((words.current - (incorrect.current + missed.current) / 4)*60 / testTime.current));
+  let error = incorrect.current + missed.current;
+  let timeInSeconds = testTime.current;
+  let WPM =
+    (correct.current > error
+      ? Math.round(((words.current - error / 4) * 60) / timeInSeconds)
+      : Math.round((correct.current * 60) / (5 * timeInSeconds))) || 0;
 
   return (
     <div className="EndPage">
@@ -35,6 +41,7 @@ export default function EndPage({
       <h1>Test Time :- {testTime.current} secs</h1>
       <h3 className="info">Characters Statistics</h3>
       <p className="data">correct : {correct.current}</p>
+      <p className="data">recorrect : {recorrect.current}</p>
       <p className="data">incorrect : {incorrect.current}</p>
       <p className="data">missed : {missed.current}</p>
       <div>

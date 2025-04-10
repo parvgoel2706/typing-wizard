@@ -8,13 +8,17 @@ function App() {
   let [Status, setStatus] = useState("start");
   let incorrect = useRef(0);
   let correct = useRef(0);
+  let recorrect = useRef(0);
   let missed = useRef(0);
+  let words = useRef(0);
   let testTime = useRef(0);
 
   useEffect(() => {
     correct.current = 0;
+    recorrect.current = 0;
     incorrect.current = 0;
     missed.current = 0;
+    words.current = 0;
   }, [isRunning]);
   return (
     <>
@@ -27,6 +31,8 @@ function App() {
         incorrect={incorrect}
         missed={missed}
         testTime={testTime}
+        words={words}
+        recorrect={recorrect}
       />
       <TypingPrac
         setIsRunning={setIsRunning}
@@ -36,6 +42,8 @@ function App() {
         incorrect={incorrect}
         missed={missed}
         testTime={testTime}
+        words={words}
+        recorrect={recorrect}
       />
     </>
   );

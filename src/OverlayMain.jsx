@@ -12,7 +12,9 @@ export default function OverlayMain({
   correct,
   incorrect,
   missed,
-  testTime
+  testTime,
+  words,
+  recorrect,
 }) {
   const [overlayClass, setOverlayClass] = useState("dispMain"); // Track class state
 
@@ -40,7 +42,16 @@ export default function OverlayMain({
       <Wizard />
       {Status === "start" && <StartPage setIsRunning={setIsRunning} />}
       {Status === "end" && (
-        <EndPage setStatus={setStatus} setIsRunning={setIsRunning} correct={correct} incorrect={incorrect} missed={missed} testTime={testTime}/>
+        <EndPage
+          setStatus={setStatus}
+          setIsRunning={setIsRunning}
+          correct={correct}
+          incorrect={incorrect}
+          missed={missed}
+          testTime={testTime}
+          words={words}
+          recorrect={recorrect}
+        />
       )}
     </div>
   );

@@ -8,11 +8,13 @@ export default function TypingText({
   isRunning,
   correct,
   incorrect,
-  missed
+  missed,
+  words,
+  recorrect,
 }) {
   let randomArray = useMemo(() => {
     if (isRunning) {
-      return generate({ exactly: 30, minLength: 2, maxLength: 10 });
+      return generate({ exactly: 30, minLength: 2, maxLength: 6 });
     }
     return [];
   }, [isRunning]);
@@ -34,12 +36,14 @@ export default function TypingText({
   let handleInput = (event) => {
     if (event.key === " ") {
       let word = randomArray[wordIdxRef.current];
+      words.current++;
+      //Count correct,incorrect and missed chars
       for (let i = 0; i < word.length; i++) {
         if (userTypeRef.current.charAt(i) === word.charAt(i)) {
           correct.current++;
-        }else if(userTypeRef.current.charAt(i) === ""){
+        } else if (userTypeRef.current.charAt(i) === "") {
           missed.current++;
-        }else {
+        } else {
           incorrect.current++;
         }
       }
@@ -51,6 +55,7 @@ export default function TypingText({
       return;
     }
     if (event.key === "Backspace") {
+      recorrect.current++;
       setUserType((prevVal) => prevVal.slice(0, -1));
       cursorIdx.current -= 1;
       return;
@@ -82,7 +87,7 @@ export default function TypingText({
 
       if (wordRect.top > 140 + 2 * (32.4 + 0.026 * screen.width)) {
         contentDiv.current.scrollTop += 33 + 0.026 * screen.width;
-        let addWord = generate({ exactly: 10, minLength: 2, maxLength: 10 });
+        let addWord = generate({ exactly: 10, minLength: 2, maxLength: 6 });
         addWord.map((newWord) => randomArray.push(newWord));
       }
     }

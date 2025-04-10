@@ -7,7 +7,7 @@ export default function TimeOption({
   setStatus,
   startTimer,
   setStartTimer,
-  testTime
+  testTime,
 }) {
   let [initialTime, setInitialTime] = useState();
 
