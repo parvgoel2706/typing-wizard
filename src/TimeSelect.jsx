@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import "./SelectMenu.css";
 
-export default function TimeSelect({ setInitial, startTimer }) {
+export default function TimeSelect({ setInitial }) {
   let handleInput = (event) => {
     setInitial(event.target.value);
   };
@@ -14,7 +15,7 @@ export default function TimeSelect({ setInitial, startTimer }) {
       name="time"
       onChange={handleInput}
       defaultValue="30"
-      disabled={startTimer}
+      className="select-menu"
     >
       <option value="15">15 secs</option>
       <option value="30">30 secs</option>

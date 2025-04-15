@@ -1,7 +1,6 @@
 .TypingText {
-  background-color: #333333;
+  background-color: #3333338a;
   height: calc(140px + 4.8vw);
-  /* height:3vh; */
   width: 80vw;
   font-size: calc(20px + 1.1vw);
   font-family: "Roboto Mono", monospace;
@@ -14,5 +13,6 @@
   flex-wrap: wrap;
   align-items: baseline;
   overflow-y: hidden;
-  color: rgba(255, 255, 255, 0.434);
+  color: rgba(255, 255, 255, 0.495);
+  border-radius: 0.5rem;
 }

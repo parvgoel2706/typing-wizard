@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TimeSelect from "./TimeSelect";
 import Timer from "./Timer";
+import "./TimingOption.css";
 
 export default function TimeOption({
   setIsRunning,
@@ -16,19 +17,9 @@ export default function TimeOption({
     testTime.current = time;
   };
 
-  let styles = {
-    backgroundColor: "blue",
-    height: "50px",
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    margin: "40px 0px",
-  };
-
   return (
-    <div className="TimeOption" style={styles}>
-      <TimeSelect setInitial={setInitial} startTimer={startTimer} />
+    <div className="TimeOption">
+      {!startTimer && <TimeSelect setInitial={setInitial} />}
       <Timer
         initTime={initialTime}
         setIsRunning={setIsRunning}

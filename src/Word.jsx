@@ -13,6 +13,10 @@ const Word = React.memo(
           style={{
             marginRight: "calc(8px + 0.8vw)",
             marginBottom: "calc(2px + 1vw)",
+            backgroundColor: cursorIdx ? "rgba(67, 75, 84, 0.4)" : "transparent", // subtle highlight
+            borderBottom: cursorIdx ? "2px solid rgb(193, 170, 79)" : "none", // yellow underline
+            borderRadius: cursorIdx ? "4px" : "0",
+            padding: cursorIdx ? "0 4px" : "0",
           }}
           ref={ref}
         >
@@ -26,7 +30,6 @@ const Word = React.memo(
                 cursorIdx,
                 wordIdx,
               })}
-              // {...(idx === letterIdx.current && { userLetter })}
               isRunning={isRunning}
             />
           ))}{" "}
