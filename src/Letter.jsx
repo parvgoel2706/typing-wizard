@@ -37,6 +37,7 @@ const Letter = React.memo(function Letter({
         cursorIdx?.current !== null &&
         wordIdx !== undefined &&
         wordIdx !== null &&
+        isRunning === true &&
         wordIdx === Math.floor(cursorIdx.current / 100) &&
         idx === cursorIdx.current % 100 && <div className="cursor"></div>}
 
