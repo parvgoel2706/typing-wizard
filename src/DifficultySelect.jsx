@@ -6,14 +6,14 @@ export default function DifficultySelect({ setDifficulty }) {
     setDifficulty(Number(event.target.value));
   };
   useEffect(() => {
-    setDifficulty(0);
+    setDifficulty(1);
   }, []);
 
   return (
     <select
       name="difficulty"
       onChange={handleInput}
-      defaultValue="0"
+      defaultValue="1"
       className="select-menu"
     >
       <option value="0">Easy</option>

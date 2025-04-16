@@ -15,7 +15,7 @@ export default function TypingPrac({
   recorrect,
 }) {
   let [startTimer, setStartTimer] = useState(false);
-  let [difficulty, setDifficulty] = useState(0);
+  let [difficulty, setDifficulty] = useState(1);
   return (
     <div className="TypingPrac" style={{ color: "white" }}>
       <TimingOption
