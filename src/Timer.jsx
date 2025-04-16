@@ -17,7 +17,7 @@ export default function Timer({
   }, [initTime]);
 
   useEffect(() => {
-    if (timeLeft == 4) {
+    if (timeLeft == 3) {
       const audio = new Audio("clockTimeout.mp3");
       audio.play();
     }
