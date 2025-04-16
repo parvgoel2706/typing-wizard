@@ -17,7 +17,7 @@ export default function Timer({
   }, [initTime]);
 
   useEffect(() => {
-    if(timeLeft == 5){
+    if (timeLeft == 5) {
       const audio = new Audio("beep_5sec.mp3");
       audio.play();
     }

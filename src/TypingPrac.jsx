@@ -15,6 +15,7 @@ export default function TypingPrac({
   recorrect,
 }) {
   let [startTimer, setStartTimer] = useState(false);
+  let [difficulty, setDifficulty] = useState(0);
   return (
     <div className="TypingPrac" style={{ color: "white" }}>
       <TimingOption
@@ -23,6 +24,7 @@ export default function TypingPrac({
         startTimer={startTimer}
         setStartTimer={setStartTimer}
         testTime={testTime}
+        setDifficulty={setDifficulty}
       />
       <TypingText
         isRunning={isRunning}
@@ -32,6 +34,7 @@ export default function TypingPrac({
         missed={missed}
         words={words}
         recorrect={recorrect}
+        difficulty={difficulty}
       />
       {screen.width < 650 ? (
         <>

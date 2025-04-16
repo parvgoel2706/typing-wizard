@@ -2,6 +2,7 @@ import { useState } from "react";
 import TimeSelect from "./TimeSelect";
 import Timer from "./Timer";
 import "./TimingOption.css";
+import DifficultySelect from "./DifficultySelect";
 
 export default function TimeOption({
   setIsRunning,
@@ -9,6 +10,7 @@ export default function TimeOption({
   startTimer,
   setStartTimer,
   testTime,
+  setDifficulty,
 }) {
   let [initialTime, setInitialTime] = useState();
 
@@ -20,6 +22,12 @@ export default function TimeOption({
   return (
     <div className="TimeOption">
       {!startTimer && <TimeSelect setInitial={setInitial} />}
+      {!startTimer && (
+        <DifficultySelect
+          setInitial={setInitial}
+          setDifficulty={setDifficulty}
+        />
+      )}
       <Timer
         initTime={initialTime}
         setIsRunning={setIsRunning}

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import keyboardImg from "./assets/keyboard.jpg";
 
 const HandleMobileFocus = ({ isRunning }) => {
   const inputRef = useRef(null);
@@ -45,7 +44,7 @@ const HandleMobileFocus = ({ isRunning }) => {
             onClick={() => inputRef.current?.focus()}
             style={{ padding: "3px 3px 0px 3px" }}
           >
-            <img src={keyboardImg} alt="Keyboard" style={{ width: "100px" }} />
+            <img src={"keyboard.jpg"} alt="Keyboard" style={{ width: "100px" }} />
           </button>
         </>
       )}

@@ -21,7 +21,7 @@ a:hover {
 }
 
 body {
-  background: linear-gradient(to bottom right, #1a1a1a, #2f3139,#1a1a1a);
+  background: linear-gradient(to bottom right, #1a1a1a, #2f3139, #1a1a1a);
   margin: 0;
   display: flex;
   min-width: 320px;
